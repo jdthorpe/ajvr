@@ -6,15 +6,15 @@
 #' @param options Optional; see the \href{https://github.com/epoberezkin/ajv#options}{ajv github page} for details
 #' @export
 Ajv <- function(options=NULL) {
-	if(exists)
 	name <- basename(tempfile("inst_"))
 
 	# create the AJV instance in V8
-	if(is.null(schema))
-		.eval("%s = new Ajv()", name )
+	if(is.null(options))
+		obj_ref = .eval("%s = new Ajv()", name,raw=TRUE)
 	else
-		.eval("%s = new Ajv(%s)", name, get_string(schema))
-
+		obj_ref = .eval("%s = new Ajv(%s)", name, get_string(options),raw=TRUE)
+	
+	stopifnot(.is_object_ref(obj_ref))
 	# return a reference to the AJV instance
 	out <- list()
 	attr(out, "name") <- name

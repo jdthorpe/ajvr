@@ -18,7 +18,8 @@ ajv.compile <- function(this,schema){
 	.eval("%s = %s.compile(%s)", 
 		  name,
 		  attr(this,"name"), 
-		  get_string(schema))
+		  get_string(schema),
+		  raw=TRUE)
 	out <- function(x)
 		.eval("%s(%s)", 
 			  name,
@@ -39,7 +40,8 @@ ajv.getSchema <- function(this,key){
 	.eval("%s = %s.getSchema(%s)", 
 		  name,
 		  attr(this,"name"), 
-		  as_literal(key))
+		  as_literal(key),
+		  raw=TRUE)
 	out <- function(x)
 		.eval("%s(%s)", 
 			  name,

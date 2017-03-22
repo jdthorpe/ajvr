@@ -40,10 +40,15 @@ get_string <- function(x){
 	x
 }
 
-.eval <- function(x,...) {
+.is_object_ref <- function(x)
+	grepl("\\[object \\w+\\]",x)
+
+.eval <- function(x,...,raw=FALSE) {
 	if(!exists("ct",.env))
 		stop("ajvr must be loaded before use.")
 	ret <- .env$ct$eval(sprintf(x,...))
+	if(raw)
+		return(ret)
 	if(ret == "undefined"){
 		return(NULL)
 	}else if(ret == "true"){
@@ -67,13 +72,15 @@ get_string <- function(x){
 
 .env <- new.env(parent=emptyenv())
 .onLoad <- function(libname, pkgname) {
-#-- 	cat("hi there\n")
 	root <- system.file(package=.packageName)
-#-- 	cat(root,"\n")
-#-- 	root <- "C:\\Users\\MPGWRK-006\\temp\\ajvr\\inst"
 	.env$ct <- V8::v8()
-	.env$ct$source(file.path(root,"ajv.js"))
-	.env$ct$source(file.path(root,"js-yaml.js"))
+	for(js_file in c("ajv.js","js-yaml.js")){
+		cat(sprintf("loading %s... ",js_file))
+		if(.env$ct$source(file.path(root,"ajv.js")) == "true") 
+			cat("Done\n") 
+		else 
+			stop(sprintf("failed to load",js_file))
+	}
 }
 
 
