@@ -1,0 +1,19 @@
+Package: ajvr
+Title: Another JSON Schema Validato.R
+Version: 1.0.0
+Authors@R: c(person("Jason", "Thorpe", role = c("aut", "cre"),
+    email = "jdthorpe@gmail.com"))
+Maintainer: Jason Thorpe <jdthorpe@gmail.com>
+Description: A thin wrapper around the 'ajv' JSON validation package
+License: MIT
+LazyData: true
+URL: https://github.com/jdthorpe/ajvr
+BugReports: https://github.com/jdthorpe/ajvr/issues
+Imports:
+  V8
+Suggests:
+  knitr,
+  rmarkdown,
+  testthat
+RoxygenNote: 5.0.1
+VignetteBuilder: knitr
