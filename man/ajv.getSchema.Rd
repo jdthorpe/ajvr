@@ -7,6 +7,8 @@
 ajv.getSchema(this, key)
 }
 \arguments{
+\item{this}{An AJV instance, provided implicitly when called via \code{my_instance$getSchema(...)}}
+
 \item{key}{String; the name of the schema to fetch from the Ajv instancd.}
 }
 \value{

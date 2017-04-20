@@ -2,11 +2,13 @@
 % Please edit documentation in R/ajv_methods.R
 \name{ajv.validateSchema}
 \alias{ajv.validateSchema}
-\title{The Ajv.validateSchema method}
+\title{A wrapper for the Ajv.validateSchema method}
 \usage{
 ajv.validateSchema(this, schema)
 }
 \arguments{
+\item{this}{An AJV instance, provided implicitly when called via \code{my_instance$ajv(...)}}
+
 \item{schema}{The Schema to be validated. 
 \code{schema} may be a  valid JSON string, an R object (i.e. `list(...)`), a
 connection to a JSON file, or the name of a JSON or YAML file.  YAML files
@@ -18,5 +20,19 @@ boolean
 }
 \description{
 The validate a json schema
+}
+\examples{
+\dontrun{
+my_ajv_instance = Ajv()
+my_ajv_instance$validateSchema
+}
+}
+\seealso{
+Other AJV.Instance.Methods: \code{\link{ajv.addFormat}},
+  \code{\link{ajv.addKeyword}},
+  \code{\link{ajv.addSchema}},
+  \code{\link{ajv.errorsText}}, \code{\link{ajv.keyword}},
+  \code{\link{ajv.removeSchema}},
+  \code{\link{ajv.validate}}
 }
 

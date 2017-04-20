@@ -7,6 +7,8 @@
 ajv.compile(this, schema)
 }
 \arguments{
+\item{this}{An AJV instance, provided implicitly when called via \code{my_instance$compile(...)}}
+
 \item{schema}{The Schema with which to validate the \code{data}.
 \code{schema} may be a  valid JSON string, an R object (i.e. `list(...)`), a
 connection to a JSON file, or the name of a JSON or YAML file.  YAML files

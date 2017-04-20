@@ -45,5 +45,6 @@ Ajv <- function(options=NULL) {
 }
 
 #' @export
-`print.AJV-instance` <- function(x)cat(sprintf('<AJV-instance "%s">\n',attr(x,"name")))
+`print.AJV-instance` <- function(x,...)
+	cat(sprintf('<AJV-instance "%s">\n',attr(x,"name")),...)
 

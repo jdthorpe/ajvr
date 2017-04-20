@@ -7,6 +7,7 @@
 #'
 #' Create an Ajv validator function from a schema
 #'
+#' @param this An AJV instance, provided implicitly when called via \code{my_instance$compile(...)}
 #' @param schema The Schema with which to validate the \code{data}.
 #'    \code{schema} may be a  valid JSON string, an R object (i.e. `list(...)`), a
 #'    connection to a JSON file, or the name of a JSON or YAML file.  YAML files
@@ -33,6 +34,7 @@ ajv.compile <- function(this,schema){
 #'
 #' Create an Ajv validator function from a schema
 #'
+#' @param this An AJV instance, provided implicitly when called via \code{my_instance$getSchema(...)}
 #' @param key String; the name of the schema to fetch from the Ajv instancd.
 #' @return an AJV validation function 
 ajv.getSchema <- function(this,key){
@@ -64,5 +66,6 @@ ajv.getSchema <- function(this,key){
 }
 
 #' @export
-`print.AJV-validatefunction` <- function(x)cat(sprintf('<AJV-validatefunction "%s">\n',attr(x,"name")))
+`print.AJV-validatefunction` <- function(x,...)
+	cat(sprintf('<AJV-validatefunction "%s">\n',attr(x,"name")),...)
 

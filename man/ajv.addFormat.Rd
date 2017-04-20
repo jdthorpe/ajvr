@@ -2,11 +2,13 @@
 % Please edit documentation in R/ajv_methods.R
 \name{ajv.addFormat}
 \alias{ajv.addFormat}
-\title{The Ajv.addFormat method}
+\title{A wrapper for the Ajv.addFormat method}
 \usage{
 ajv.addFormat(this, key, format)
 }
 \arguments{
+\item{this}{An AJV instance, provided implicitly when called via \code{my_instance$addFormat(...)}}
+
 \item{key}{String; the name with format to add.}
 
 \item{format}{the format to be added.  Note that JavaScript object literals
@@ -18,5 +20,19 @@ should be enclosed in a call to \code{\link[V8]{JS}}. (i.e.
 }
 \description{
 Add a string format to an Ajv instance.
+}
+\examples{
+\dontrun{
+my_ajv_instance = Ajv()
+my_ajv_instance$keyword(key,object)
+}
+}
+\seealso{
+Other AJV.Instance.Methods: \code{\link{ajv.addKeyword}},
+  \code{\link{ajv.addSchema}},
+  \code{\link{ajv.errorsText}}, \code{\link{ajv.keyword}},
+  \code{\link{ajv.removeSchema}},
+  \code{\link{ajv.validateSchema}},
+  \code{\link{ajv.validate}}
 }
 

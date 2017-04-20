@@ -2,11 +2,13 @@
 % Please edit documentation in R/ajv_methods.R
 \name{ajv.keyword}
 \alias{ajv.keyword}
-\title{The Ajv.addFormat method}
+\title{A wrapper for the Ajv.addFormat method}
 \usage{
 ajv.keyword(this, key, object)
 }
 \arguments{
+\item{this}{An AJV instance, provided implicitly when called via \code{my_instance$keyword(...)}}
+
 \item{key}{String; the name with keyword to add.}
 
 \item{object}{the format to be added.  Must be enclosed in a call to
@@ -17,5 +19,20 @@ ajv.keyword(this, key, object)
 }
 \description{
 Add a string format to an Ajv instance.
+}
+\examples{
+\dontrun{
+my_ajv_instance = Ajv()
+my_ajv_instance$keyword(key,object)
+}
+}
+\seealso{
+Other AJV.Instance.Methods: \code{\link{ajv.addFormat}},
+  \code{\link{ajv.addKeyword}},
+  \code{\link{ajv.addSchema}},
+  \code{\link{ajv.errorsText}},
+  \code{\link{ajv.removeSchema}},
+  \code{\link{ajv.validateSchema}},
+  \code{\link{ajv.validate}}
 }
 
