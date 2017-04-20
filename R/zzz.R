@@ -4,12 +4,15 @@
 # --------------------------------------------------
 
 as_literal <- function(x){
-	if(inherits(x,"JS_EVAL")){
+	if(inherits(x,c("JS_EVAL","AsIs"))){
 		# PASS
+	}else if(is.name(x)){
+		x <- deparse(x)
 	}else if( is.character(x) && (length(x) == 1L)){
+		# >>> this is what differs between as_literal and get_string <<<
 		if(!grepl("^\\s*(?:'(.[^']|\\\\.)*'|\"(.[^\"]|\\\\.)*\")\\s*$",x)){
 			# it's not a quoted string:
-			x <- sprintf('"%s"',gsub('"','\\"',x))
+			x <- sprintf('"%s"',gsub('"','\\\\\\"',x))
 		}
 	}else{
 		x <- get_string(x);
@@ -18,13 +21,18 @@ as_literal <- function(x){
 }
 
 get_string <- function(x){
-	if(inherits(x,"JS_EVAL")){
+	if(inherits(x,c("JS_EVAL","AsIs"))){
 		# PASS
+	}else if(is.name(x)){
+		x <- deparse(x)
+	}else if( is.call(substitute(x)) && 
+			 as.character(substitute(x)[[1]]) %in% c("quote","bquote")){
+		x <- deparse(x)
 	}else if(inherits(x,"connection")){
 		x <- paste(readLines(x), collapse = "\n")
 	}else if(inherits(x,"character")){
 		stopifnot(length(x) != 0L) 
-		if( (length(x) == 1) && file.exists(x)){
+		if((length(x) == 1) && file.exists(x)){
 			if(grepl("\\.ya?ml$",x)){
 				x <- .env$ct$eval(sprintf('JSON.stringify(jsyaml.load("%s"))',
 										 paste0(gsub('["\\\\]','\\\\"',readLines(x)),collapse='\\n')))
@@ -46,9 +54,12 @@ get_string <- function(x){
 .eval <- function(x,...,raw=FALSE) {
 	if(!exists("ct",.env))
 		stop("ajvr must be loaded before use.")
+#-- 	cat(sprintf("evaluating: %s \n", sprintf(x,...)))
 	ret <- .env$ct$eval(sprintf(x,...))
-	if(raw)
+#-- 	cat("returning raw data",raw,'\n')
+	if(raw){
 		return(ret)
+	}
 	if(ret == "undefined"){
 		return(NULL)
 	}else if(ret == "true"){
@@ -75,10 +86,8 @@ get_string <- function(x){
 	root <- system.file(package=.packageName)
 	.env$ct <- V8::v8()
 	for(js_file in c("ajv.js","js-yaml.js")){
-		cat(sprintf("loading %s... ",js_file))
-		if(.env$ct$source(file.path(root,"ajv.js")) == "true") 
-			cat("Done\n") 
-		else 
+		#cat(sprintf("loading %s... ",js_file))
+		if(.env$ct$source(file.path(root,js_file)) != "true") 
 			stop(sprintf("failed to load",js_file))
 	}
 }

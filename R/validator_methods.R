@@ -24,7 +24,7 @@ ajv.compile <- function(this,schema){
 		.eval("%s(%s)", 
 			  name,
 			  get_string(x))
-	attr(out,"name") <- "name"
+	attr(out,"name") <- name
 	class(out) <- "AJV-validatefunction"
 	out
 }
@@ -57,7 +57,7 @@ ajv.getSchema <- function(this,key){
 #' @export
 `$.AJV-validatefunction` <- function(x,name){
 	switch(name,
-		   "errors"= .eval("%s.errors", attr(x,"name")) ,
+		   "errors"= .eval("JSON.stringify(%s.errors);", attr(x,"name"),raw=TRUE) ,
 		   #"default"=
 		   stop(sprintf("AJV-validatefunction has No such method or attribute '%s'",name)) 
 		   )

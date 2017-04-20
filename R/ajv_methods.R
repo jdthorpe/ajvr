@@ -15,9 +15,10 @@
 #' @param data The data to be validated.  may be any of the above foremats. 
 #'
 ajv.validate <- function(this,schema,data){
+	#cat("call to ajv.validate(): ",sprintf("%s.validate(%s,%s)", attr(this,"name"), as_literal(schema),get_string(data)),"\n")
 	.eval("%s.validate(%s,%s)", 
 		  attr(this,"name"), 
-		  get_string(schema),
+		  as_literal(schema),
 		  get_string(data))
 }
 
@@ -108,14 +109,8 @@ ajv.keyword <- function(this,key,object){
 					object))
 }
 
-#-- ajv$addSchema(fname,"flub")
-#-- flub = ajv$getSchema("flub")
-#-- flub(valid_json)
-#-- ajv$removeSchema("flub")
-#-- ajv$addFormat("foobar",V8::JS("/^(foo|bar)$/"))
-
 
 ajv.errorsText <- function(this){
-	.eval("%s.errorsText", attr(this,"name"))
+	.eval("%s.errorsText()", attr(this,"name"), raw=TRUE)
 }
 

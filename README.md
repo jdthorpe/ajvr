@@ -15,7 +15,7 @@ object is expected.
 
 ```R
 # install.packages("devtools") # (if not already installed)
-devtools::install_git("git://github.com/jdthorpe/ajvr.git")
+devtools::install_github("jdthorpe/ajvr")
 ```
 
 ## Getting started
