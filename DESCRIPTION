@@ -1,4 +1,4 @@
-Package: ajvr
+Package: ajv
 Title: Another JSON Schema Validato.R
 Version: 1.0.0
 Authors@R: c(person("Jason", "Thorpe", role = c("aut", "cre"),
