@@ -4,3 +4,4 @@
 ^build\.sh$
 ^\.V8history$
 ^ajvr_*\.tar\.gz$
+^cran-comments\.md$
