@@ -5,7 +5,7 @@ Authors@R: c(person("Jason", "Thorpe", role = c("aut", "cre"),
     email = "jdthorpe@gmail.com"))
 Maintainer: Jason Thorpe <jdthorpe@gmail.com>
 Description: A thin wrapper around the 'ajv' JSON validation package for Javascript.
-License: MIT + file LICENSE
+License: GPL-2
 LazyData: true
 URL: https://github.com/jdthorpe/ajvr
 BugReports: https://github.com/jdthorpe/ajvr/issues
