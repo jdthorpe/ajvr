@@ -1,7 +1,7 @@
 # The 'ajv' R library
 
 The `ajv` library is a very thin wrapper around the awesome
-[AJV](https://github.com/epoberezkin/ajv) JSON validation library.  The
+[AJV](http://epoberezkin.github.io/ajv/) JSON validation library.  The
 essential change between the syntax presented in the official [AJV
 Readme](https://github.com/epoberezkin/ajv) is exchanging JavaScript's dot
 operator (`.`) with R's dollar-sign operator (`$`).
