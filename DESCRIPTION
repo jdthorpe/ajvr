@@ -1,10 +1,10 @@
 Package: ajv
-Title: Another JSON Schema Validato.R
+Title: Another JSON Schema Validator
 Version: 1.0.0
 Authors@R: c(person("Jason", "Thorpe", role = c("aut", "cre"),
     email = "jdthorpe@gmail.com"))
 Maintainer: Jason Thorpe <jdthorpe@gmail.com>
-Description: A thin wrapper around the 'ajv' JSON validation package for JavaScript. See http://epoberezkin.github.io/ajv/ for details.
+Description: A thin wrapper around the 'ajv' JSON validation package for JavaScript. See <http://epoberezkin.github.io/ajv/> for details.
 License: GPL-2
 LazyData: true
 URL: https://github.com/jdthorpe/ajvr
