@@ -27,11 +27,10 @@ my_ajv_instance$validate
 }
 }
 \seealso{
-Other AJV.Instance.Methods: \code{\link{ajv.addFormat}},
+Other AJV Instance Methods: \code{\link{ajv.addFormat}},
   \code{\link{ajv.addKeyword}},
   \code{\link{ajv.addSchema}},
   \code{\link{ajv.errorsText}}, \code{\link{ajv.keyword}},
   \code{\link{ajv.removeSchema}},
   \code{\link{ajv.validateSchema}}
 }
-
