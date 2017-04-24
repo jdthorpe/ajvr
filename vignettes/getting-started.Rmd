@@ -1,9 +1,9 @@
 ---
-title: "Ajvr: getting-started"
+title: "Ajv: Getting started"
 author: "Jason Thorpe"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Ajv: Getting started}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
