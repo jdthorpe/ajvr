@@ -12,3 +12,4 @@ Ajv(options = NULL)
 \description{
 Create an Ajv instnace (the equivalent of calling \code{new Ajv()} in javascript)
 }
+
