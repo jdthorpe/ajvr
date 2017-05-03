@@ -24,9 +24,9 @@ The fastest validation call:
 
 ```R
 library('ajv')
-var ajv = Ajv() # options can be passed, e.g. list(allErrors= TRUE)
-var validate = ajv$compile(schema)
-var valid = validate(data)
+ajv = Ajv() # options can be passed, e.g. list(allErrors= TRUE)
+validate = ajv$compile(schema)
+valid = validate(data)
 if (!valid) print(validate$errors)
 ```
 
@@ -34,7 +34,7 @@ or with less code
 
 ```R
 # ...
-var valid = ajv$validate(schema, data)
+valid = ajv$validate(schema, data)
 if (!valid) print(ajv$errors)
 # ...
 ```
@@ -44,7 +44,7 @@ or
 ```R
 # ...
 ajv$addSchema(schema, 'mySchema')
-var valid = ajv$validate('mySchema', data)
+valid = ajv$validate('mySchema', data)
 if (!valid) print(ajv$errorsText())
 # ...
 ```
